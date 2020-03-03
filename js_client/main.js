@@ -10,16 +10,23 @@ function preload(){
     jeu.scene.load.image("terrain","terrain.png");
     jeu.scene.load.image("tilesPerso","tilesPerso.png");
     jeu.scene.load.tilemapTiledJSON("map","level1.json");
-
-    jeu.scene.load.image("player","player.png");
+    jeu.scene.load.image("playerBarre","playerBarre.png");
+    jeu.scene.load.image("playerCenter","playerCenter.png");
+    jeu.scene.load.image("debut","debut.png");
+    jeu.scene.load.image("fin","fin.png");
 }
 function create(){
     jeu.world.initialiserWorld();
     jeu.player.initialiserPlayer();
+
+    jeu.cursor = jeu.scene.input.keyboard.createCursorKeys();
+
+    jeu.world.gererCamera();
 }
 function update(time, delta){
     ajusterTailleEcran();
     jeu.player.gererRotation();
+    jeu.player.gererDeplacement();
 }
 
 function ajusterTailleEcran(){
