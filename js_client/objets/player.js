@@ -10,8 +10,8 @@ var player = {
         this.playerBarre = jeu.scene.physics.add.sprite(jeu.world.positionDebut.x,jeu.world.positionDebut.y,"playerBarre").setScale(2);
         this.playerCenter = jeu.scene.physics.add.sprite(jeu.world.positionDebut.x,jeu.world.positionDebut.y,"playerCenter").setScale(2);
 
-        this.ident = jeu.scene.physics.add.sprite(jeu.world.positionDebut.x + this.playerBarre.width,jeu.world.positionDebut.y,"playerIdent").setScale(0.5);
-        this.ident2 = jeu.scene.physics.add.sprite(jeu.world.positionDebut.x - this.playerBarre.width,jeu.world.positionDebut.y,"playerIdent").setScale(0.5);
+        this.ident = jeu.scene.physics.add.sprite(jeu.world.positionDebut.x + this.playerBarre.width,jeu.world.positionDebut.y).setScale(0.5);
+        this.ident2 = jeu.scene.physics.add.sprite(jeu.world.positionDebut.x - this.playerBarre.width,jeu.world.positionDebut.y).setScale(0.5);
     },
     
     generatePlayerAnimations : function(){
@@ -24,6 +24,8 @@ var player = {
             if(jeu.cursor.right.isDown) this.playerCenter.x += this.speed;
             if(jeu.cursor.up.isDown) this.playerCenter.y -= this.speed;
             if(jeu.cursor.down.isDown) this.playerCenter.y += this.speed;
+            if(jeu.cursor.space.isDown) this.speed = 10;
+            if(jeu.cursor.space.isUp) this.speed = 5;
         }
         this.playerBarre.x = this.playerCenter.x;
         this.playerBarre.y = this.playerCenter.y;
